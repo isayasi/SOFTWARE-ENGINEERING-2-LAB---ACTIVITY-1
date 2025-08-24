@@ -1,0 +1,64 @@
+<?php
+class QuadraticEquation { 
+    private $a;
+    private $b;
+    private $c;
+    
+    public function __construct($a, $b, $c) {
+        $this->a = $a;
+        $this->b = $b;
+        $this->c = $c;
+    }
+    
+    public function getA() {
+        return $this->a;
+    }
+    
+    public function getB() {
+        return $this->b;
+    }
+    
+    public function getC() {
+        return $this->c;
+    }
+    
+    public function getDiscriminant() { // formula for discriminant
+        return ($this->b * $this->b) - (4 * $this->a * $this->c);
+    }
+    
+    public function getRoot1() { // to get root
+        $discriminant = $this->getDiscriminant();
+        if ($discriminant < 0) {
+            return 0;
+        }
+        return (-$this->b + sqrt($discriminant)) / (2 * $this->a);
+    }
+    
+    public function getRoot2() { // to get root
+        $discriminant = $this->getDiscriminant();
+        if ($discriminant < 0) {
+            return 0;
+        }
+        return (-$this->b - sqrt($discriminant)) / (2 * $this->a);
+    }
+}
+
+// Test the class
+$equation1 = new QuadraticEquation(2, -4, 2);
+echo "Equation: x^2 - 3x + 2 = 0<br>";
+echo "Discriminant: " . $equation1->getDiscriminant() . "<br>";
+echo "Root 1: " . $equation1->getRoot1() . "<br>";
+echo "Root 2: " . $equation1->getRoot2() . "<br><br>";
+
+$equation2 = new QuadraticEquation(1, 8, 3);
+echo "Equation: x^2 + 2x + 1 = 0<br>";
+echo "Discriminant: " . $equation2->getDiscriminant() . "<br>";
+echo "Root 1: " . $equation2->getRoot1() . "<br>";
+echo "Root 2: " . $equation2->getRoot2() . "<br><br>";
+
+$equation3 = new QuadraticEquation(4, 2, 5);
+echo "Equation: x^2 + 2x + 3 = 0<br>";
+echo "Discriminant: " . $equation3->getDiscriminant() . "<br>";
+echo "Root 1: " . $equation3->getRoot1() . "<br>";
+echo "Root 2: " . $equation3->getRoot2() . "<br>";
+?>
