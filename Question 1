@@ -1,0 +1,45 @@
+<?php
+class Rectangle { // create rectangle
+    private $width;
+    private $height;
+    
+    public function __construct($width = 1, $height = 1) { // setting the default value to 1
+        $this->width = $width;
+        $this->height = $height;
+    }
+    
+    public function getArea() { // formula for getting the area
+        return $this->width * $this->height;
+    }
+    
+    public function getPerimeter() { // formula for getting perimeter
+        return 2 * ($this->width + $this->height);
+    }
+    
+    // Getters and setters
+    public function getWidth() {
+        return $this->width;
+    }
+    
+    public function setWidth($width) {
+        $this->width = $width;
+    }
+    
+    public function getHeight() {
+        return $this->height;
+    }
+    
+    public function setHeight($height) {
+        $this->height = $height;
+    }
+}
+
+// Test the Rectangle class
+$rectangle1 = new Rectangle(7, 4);
+echo "Area: " . $rectangle1->getArea() . "\n";
+echo "Perimeter: " . $rectangle1->getPerimeter() . "\n";
+
+$rectangle2 = new Rectangle(); // Uses default values
+echo "Area: " . $rectangle2->getArea() . "\n";
+echo "Perimeter: " . $rectangle2->getPerimeter() . "\n";
+?>
