@@ -1,0 +1,61 @@
+<?php
+class Student {
+    private $name;
+    private $courses;
+    private $coursePrice;
+    
+    public function __construct($name) { // run when there is new student created
+        $this->name = $name;
+        $this->courses = array();
+        $this->coursePrice = 2000;
+    }
+    
+    public function enrollCourse($courseName) { // add course to the array
+        $this->courses[] = $courseName;
+        echo "Enrolled in: $courseName<br>";
+    }
+    
+    public function dropCourse($courseName) { // remove course from the array
+        $index = array_search($courseName, $this->courses);
+        if ($index !== false) {
+            unset($this->courses[$index]);
+            echo "Dropped: $courseName<br>";
+        } else {
+            echo "Course not found: $courseName<br>";
+        }
+    }
+    
+    public function getTotalFee() { // total of all courses fee
+        $total = count($this->courses) * $this->coursePrice;
+        return $total;
+    }
+    
+    public function displayCourses() { // display student, enrolled courses, and total fee
+        echo "<br>Student: $this->name<br>";
+        echo "Enrolled courses:<br>";
+        if (empty($this->courses)) {
+            echo "No courses enrolled.<br>";
+        } else {
+            foreach ($this->courses as $course) {
+                echo "- $course<br>";
+            }
+        }
+        echo "Total fee: " . $this->getTotalFee() . " PHP<br>";
+    }
+}
+
+// Testing the class
+$student = new Student("Quenzzy Navelgas");
+
+$student->enrollCourse("Data Analysis");
+$student->enrollCourse("CS Thesis 1");
+$student->enrollCourse("Software Engineering 2");
+
+$student->displayCourses();
+
+$student->dropCourse("Practicum");
+$student->dropCourse("CS Thesis 1");
+
+$student->displayCourses();
+
+?>
